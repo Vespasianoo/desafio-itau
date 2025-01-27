@@ -1,5 +1,5 @@
 import { ImMemoryTransacaoRepository } from '../../repositories/inMemoryTransacao.repository'
-import { CreateTransacaoService } from '../CreateTransacao.service'
+import { CreateTransacaoService } from '../createTransacao.service'
 
 export function makeCreateTransacaoService() {
   const transacaoRepository = new ImMemoryTransacaoRepository()

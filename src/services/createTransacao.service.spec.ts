@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { ImMemoryTransacaoRepository } from '../repositories/inMemoryTransacao.repository'
-import { CreateTransacaoService } from './CreateTransacao.service'
+import { CreateTransacaoService } from './createTransacao.service'
 import { UnprocessableEntity } from './errors/unprocessableEntity'
 
 import dayjs from 'dayjs'

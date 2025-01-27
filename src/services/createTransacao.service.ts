@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import timezone from 'dayjs/plugin/timezone'
+// import timezone from 'dayjs/plugin/timezone'
 
 import {
   ITransacaoRepository,
@@ -9,7 +9,7 @@ import {
 import { UnprocessableEntity } from './errors/unprocessableEntity'
 
 dayjs.extend(utc)
-dayjs.extend(timezone)
+// dayjs.extend(timezone)
 
 interface CreateTransacaoRequest {
   valor: number
