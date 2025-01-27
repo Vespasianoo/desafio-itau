@@ -6,4 +6,5 @@ export interface Transacao {
 
 export interface ITransacaoRepository {
   create(data: Transacao): Promise<Transacao>
+  deleteAll(): Promise<void>
 }

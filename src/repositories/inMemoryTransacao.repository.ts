@@ -18,4 +18,8 @@ export class ImMemoryTransacaoRepository implements ITransacaoRepository {
 
     return Transacao
   }
+
+  async deleteAll() {
+    this.items = []
+  }
 }
