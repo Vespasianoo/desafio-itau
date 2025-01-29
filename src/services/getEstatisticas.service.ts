@@ -5,10 +5,22 @@ interface GetEstatisticasServiceRequest {
   seconds?: number
 }
 
+interface GetEstatisticasServiceResponse {
+  estatisticas: {
+    count: number
+    sum: number
+    avg: number
+    min: number
+    max: number
+  }
+}
+
 export class GetEstatisticasService {
   constructor(private transacaoRepository: ITransacaoRepository) {}
 
-  async execute({ seconds = 60 }: GetEstatisticasServiceRequest) {
+  async execute({
+    seconds = 60,
+  }: GetEstatisticasServiceRequest): Promise<GetEstatisticasServiceResponse> {
     const transacoes =
       await this.transacaoRepository.getTransacoesFromLastSeconds(seconds)
 
