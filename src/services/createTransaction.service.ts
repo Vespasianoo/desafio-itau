@@ -1,32 +1,30 @@
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-// import timezone from 'dayjs/plugin/timezone'
 
 import {
-  ITransacaoRepository,
-  Transacao,
-} from '../repositories/interface/ITransacaoRepository'
+  ITransactionRepository,
+  Transaction,
+} from '../repositories/interface/ITransactionRepository'
 import { UnprocessableEntity } from './errors/unprocessableEntity'
 
 dayjs.extend(utc)
-// dayjs.extend(timezone)
 
-interface CreateTransacaoRequest {
+interface CreateTransactionRequest {
   valor: number
   dataHora: Date
 }
 
-interface CreateTransacaoServiceResponse {
-  transacao: Transacao
+interface CreateTransactionServiceResponse {
+  transaction: Transaction
 }
 
-export class CreateTransacaoService {
-  constructor(private transacaoRepository: ITransacaoRepository) {}
+export class CreateTransactionService {
+  constructor(private transactionRepository: ITransactionRepository) {}
 
   async execute({
     valor,
     dataHora,
-  }: CreateTransacaoRequest): Promise<CreateTransacaoServiceResponse> {
+  }: CreateTransactionRequest): Promise<CreateTransactionServiceResponse> {
     const isPositive = valor >= 0
 
     const dataHoraRequest = dayjs(new Date(dataHora))
@@ -38,13 +36,13 @@ export class CreateTransacaoService {
       throw new UnprocessableEntity()
     }
 
-    const transacao = await this.transacaoRepository.create({
+    const transaction = await this.transactionRepository.create({
       valor,
       dataHora,
     })
 
     return {
-      transacao,
+      transaction,
     }
   }
 }

@@ -1,22 +1,26 @@
-import { Transacao } from '../repositories/interface/ITransacaoRepository'
+import { Transaction } from '../repositories/interface/ITransactionRepository'
 
 export class TransactionCalculator {
-  static getSum(transacoes: Transacao[]) {
-    return transacoes.reduce((acc, transacao) => acc + transacao.valor, 0)
+  static getSum(transactions: Transaction[]) {
+    return transactions.reduce((acc, transaction) => acc + transaction.valor, 0)
   }
 
-  static getAverage(transacoes: Transacao[]) {
-    if (transacoes.length === 0) return 0
-    return this.getSum(transacoes) / transacoes.length
+  static getAverage(transactions: Transaction[]) {
+    if (transactions.length === 0) return 0
+    return this.getSum(transactions) / transactions.length
   }
 
-  static getMax(transacoes: Transacao[]) {
-    if (transacoes.length === 0) return 0
-    return Math.max(...transacoes.map((transacao) => transacao.valor))
+  static getMax(transactions: Transaction[]) {
+    if (transactions.length === 0) return 0
+    return Math.max(...transactions.map((transaction) => transaction.valor))
   }
 
-  static getMin(transacoes: Transacao[]) {
-    if (transacoes.length === 0) return 0
-    return Math.min(...transacoes.map((transacao) => transacao.valor))
+  static getMin(transactions: Transaction[]) {
+    if (transactions.length === 0) return 0
+    return Math.min(...transactions.map((transaction) => transaction.valor))
+  }
+
+  static count(transactions: Transaction[]) {
+    return transactions.length
   }
 }

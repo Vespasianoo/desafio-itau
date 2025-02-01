@@ -1,26 +1,26 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { ImMemoryTransacaoRepository } from '../repositories/inMemoryTransacao.repository'
-import { CreateTransacaoService } from './createTransacao.service'
+import { InMemoryTransactionRepository } from '../repositories/inMemoryTransaction.repository'
+import { CreateTransactionService } from './createTransaction.service'
 import { UnprocessableEntity } from './errors/unprocessableEntity'
 
 import dayjs from 'dayjs'
 
-let transacaoRepository: ImMemoryTransacaoRepository
-let sut: CreateTransacaoService
+let transactionRepository: InMemoryTransactionRepository
+let sut: CreateTransactionService
 
-describe('Transacao Service', () => {
+describe('Create Transaction Service', () => {
   beforeEach(() => {
-    transacaoRepository = new ImMemoryTransacaoRepository()
-    sut = new CreateTransacaoService(transacaoRepository)
+    transactionRepository = new InMemoryTransactionRepository()
+    sut = new CreateTransactionService(transactionRepository)
   })
 
-  it('should  be able to send a transaction', async () => {
-    const { transacao } = await sut.execute({
+  it('should be able to send a transaction', async () => {
+    const { transaction } = await sut.execute({
       valor: 2002,
       dataHora: new Date('2025-01-26T18:30:00Z'),
     })
 
-    expect(transacao.id).toEqual(expect.any(String))
+    expect(transaction.id).toEqual(expect.any(String))
   })
 
   it('should not be able to send a transaction with a negative value', async () => {

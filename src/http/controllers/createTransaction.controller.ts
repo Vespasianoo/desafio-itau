@@ -1,23 +1,26 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
-import { makeCreateTransacaoService } from '../../services/factories/makeCreateTransacaoService'
+
+import { transactionRepository } from '../../db'
+import { CreateTransactionService } from '../../services/createTransaction.service'
 import { UnprocessableEntity } from '../../services/errors/unprocessableEntity'
 
-export async function createTransacaoController(
+export async function createTransactionController(
   request: FastifyRequest,
   reply: FastifyReply,
 ) {
-  const createTransacaoBodySchema = z.object({
+  const createTransactionBodySchema = z.object({
     valor: z.number(),
     dataHora: z.coerce.date(),
   })
-
-  const { valor, dataHora } = createTransacaoBodySchema.parse(request.body)
+  const { valor, dataHora } = createTransactionBodySchema.parse(request.body)
 
   try {
-    const createTransacaoService = makeCreateTransacaoService()
+    const createTransactionService = new CreateTransactionService(
+      transactionRepository,
+    )
 
-    await createTransacaoService.execute({
+    await createTransactionService.execute({
       valor,
       dataHora,
     })
