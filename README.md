@@ -8,6 +8,10 @@ Clone o projeto
 ```bash
   git clone https://github.com/Vespasianoo/desafio-itau.git
 ```
+Copie o arquivo .env.example e renomeie para .env
+```bash
+  cp .env.example .env
+```
 
 Entre no diretório do projeto
 
@@ -15,10 +19,6 @@ Entre no diretório do projeto
   docker compose up --build -d
 ```
 
-Copie o arquivo .env.example e renomeie para .env
-```bash
-  cp .env.example .env
-```
 
 ## Documentação da API
 
