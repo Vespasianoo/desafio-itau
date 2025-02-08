@@ -28,7 +28,7 @@ export class CreateTransactionService {
     const isPositive = valor >= 0
 
     const dataHoraRequest = dayjs(new Date(dataHora))
-    const currentDateTime = dayjs(new Date()).utc(true)
+    const currentDateTime = dayjs().utc(true)
 
     const isDateAfterCurrentDate = dataHoraRequest.isAfter(currentDateTime)
 
