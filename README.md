@@ -15,6 +15,11 @@ Entre no diretório do projeto
   docker compose up --build -d
 ```
 
+Copie o arquivo .env.example e renomeie para .env
+```bash
+  cp .env.example .env
+```
+
 ## Documentação da API
 
 #### Lançamento/criação de uma transação
