@@ -18,5 +18,5 @@ app.setErrorHandler((error, _, reply) => {
     // aq a gente deveria fazer o log para uma ferramenta extarna
   }
 
-  return reply.status(400).send()
+ return reply.status(500).send({ message: 'Internal server error.' })
 })
